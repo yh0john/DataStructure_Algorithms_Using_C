@@ -18,5 +18,11 @@ BTreeNode* GetRightSubTree(BTreeNode* bt);		//오른쪽 서브트리의 주소값 리턴
 void MakeLeftSubTree(BTreeNode* main, BTreeNode* sub);		//main 왼쪽 자식 트리에 sub를 연결
 void MakeRightSubTree(BTreeNode* main, BTreeNode* sub);		//main 오른쪽 자식 트리에 sub를 연결
 
+
+
+/* 루트 노드를 언제 방문 할 것인지*/
+void InorderTraverse(BTreeNode* bt);		//중위순회
+void PreorderTraverse(BTreeNode* bt);		//전위순회
+void PostorderTraverse(BTreeNode* bt);		//후위순회
 #endif
 
