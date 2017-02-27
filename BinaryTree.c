@@ -6,11 +6,59 @@
 *
 */
 
+
 #include<stdio.h>
 #include<stdlib.h>
 #include "BinaryTree.h"
 
-//Binary Tree 테스트 코드 
+BTreeNode* MakeBTreeNode(void)
+{
+	BTreeNode* bt = (BTreeNode *)malloc(sizeof(BTreeNode));
+	bt->left = NULL;
+	bt->right = NULL;
+	return bt;
+}
+
+BTData GetData(BTreeNode* bt) 
+{
+	return bt->data;
+}
+
+void SetData(BTreeNode*bt, BTData data) 
+{
+	bt->data = data;
+}
+
+
+BTreeNode* GetLeftSubTree(BTreeNode* bt)
+{
+	return bt->left;
+}
+
+BTreeNode* GetRightSubTree(BTreeNode* bt)
+{
+	return bt->right;
+}
+
+void MakeLeftSubTree(BTreeNode* main, BTreeNode* sub)
+{
+	if (main->left != NULL)
+		free(main->left);
+
+	main->left = sub;
+}
+
+void MakeRightSubTree(BTreeNode* main, BTreeNode* sub)
+{
+	if (main->right != NULL)
+		free(main->right);
+
+	main->right = sub;
+
+}
+
+
+
 int main(void) {
 	BTreeNode* bt1 = MakeBTreeNode();	//노드 bt1 생성
 	BTreeNode* bt2 = MakeBTreeNode();	//노드 bt2 생성
@@ -26,8 +74,8 @@ int main(void) {
 	MakeRigthSubTree(bt1, bt3);			//bt3를 bt1의 오른쪽 자식노드로 설정
 	MakeLeftSubTree(bt2, bt4);			//bt4를 bt2의 왼쪽 자식노드로 설정
 
-	//bt1의 왼쪽 자식 노드 데이터 출력
-	printf("%d \n",GetData(GetLeftSubTre(bt1)));
+										//bt1의 왼쪽 자식 노드 데이터 출력
+	printf("%d \n", GetData(GetLeftSubTre(bt1)));
 
 	//bt1의 왼쪽 자식 노드의 왼쪽 자식 노드 데이터 출력
 	printf("%d \n", GetData(GetLeftSubTree(GetLeftSubTree(bt1))));
