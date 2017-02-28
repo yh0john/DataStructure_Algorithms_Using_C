@@ -9,9 +9,15 @@
 
 #include<stdio.h>
 #include<stdlib.h>
-#include "BinaryTree.h"
-#include "BinaryTree2.h"
 
+typedef int BTData;
+
+/* Tree Node 구조체 구현 */
+typedef struct _treeNode {
+	BTData data;
+	struct _treeNode* left;
+	struct _treeNode* right;
+}BTreeNode;
 
 BTreeNode* MakeBTreeNode(void)
 {
@@ -81,7 +87,16 @@ void PostorderTraverse(BTreeNode* bt)
 		return;
 }
 
+void DeleteNode(BTreeNode* bt)
+{
+	if (bt == NULL)
+		return;
 
+	//트리의 삭제를 위해서 순회가 필요하다.
+	DeleteNode(bt->left);
+	DeleteNode(bt->right);
+	printf("%d \n", bt->data);
+}
 
 int main(void) {
 	BTreeNode* bt1 = MakeBTreeNode();	//노드 bt1 생성
