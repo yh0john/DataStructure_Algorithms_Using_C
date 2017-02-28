@@ -17,7 +17,7 @@ BTreeNode* MakeBTreeNode(void)
 {
 	BTreeNode* bt = (BTreeNode *)malloc(sizeof(BTreeNode));
 	bt->left = NULL;
-	bt->right = NULL;
+	bt->right = NULL; 
 	return bt;
 }
 
