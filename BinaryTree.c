@@ -10,6 +10,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include "BinaryTree.h"
+#include "BinaryTree2.h"
+
 
 BTreeNode* MakeBTreeNode(void)
 {
