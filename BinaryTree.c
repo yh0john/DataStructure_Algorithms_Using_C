@@ -79,12 +79,20 @@ void PreorderTraverse(BTreeNode* bt)
 {
 	if (bt == NULL)
 		return;
+	
+	printf("%d \n", bt->data);
+	PreorderTraverse(bt->left);
+	PreorderTraverse(bt->right);
 }
 
 void PostorderTraverse(BTreeNode* bt)
 {
 	if (bt == NULL)
 		return;
+
+	PostorderTraverse(bt->left);
+	PostorderTraverse(bt->right);
+	printf("%d \n", bt->data);
 }
 
 void DeleteNode(BTreeNode* bt)
