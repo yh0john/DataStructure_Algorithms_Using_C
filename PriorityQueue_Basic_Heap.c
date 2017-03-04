@@ -67,6 +67,30 @@ int GetRightChildIDX(int idx)
 	return idx * 2 + 1;
 }
 
+int GetHighPriorityChildIDX(Heap* hp, int idx)
+{
+	
+	if (GetLeftChildIDX(idx) > hp->numOfData)
+	{
+		//자식 노드가 존재하지 않는다면 0 반환
+		return 0;
+	}
+	else if(GetLeftChildIDX(idx)==hp->numOfData){
+		//왼쪽 자식 노드 하나만 있을 경우
+		return GetLeftChildIDX(idx);
+	}
+	else {
+
+		//왼쪽 노드의 우선순위가 높을 경우 왼쪽 노드 반환, 반대 일 경우 오른쪽 노드 반환
+		if (GetLeftChildIDX(idx) > GetRightChildIDX(idx)) {
+			return GetLeftChildIDX(idx);
+		}
+		else {
+			GetRightChildIDX(idx);
+		}
+	}
+}
+
 void HeapInsert(Heap* hp,HData data,Priority pr)
 {
 	//처음 들어온 데이터는 우선순위가 가장 낮다고 가정
@@ -93,6 +117,26 @@ void HeapInsert(Heap* hp,HData data,Priority pr)
 
 HData HeapDelete(Heap* hp)
 {
+	//우선순위가 가장 높은 데이터를 삭제
+	//즉, 루트 노드를 삭제 한 후 마지막 노드의 데이터를 채움
+	//이후 삽입과정과 동일함 
+
+	HData retData = (hp->heapArr[1]).data;
+	HeapElem lastElem = hp->heapArr[hp->numOfData];
+
+	int parentIdx = 1;
+	int childIdx;
+
+	while (childIdx = GetHighPriorityIDX(hp,parentIdx)) {
+		if (lastElem.pr<=hp->heapArr[childIdx].pr)
+			break;
+		hp->heapArr[parentIdx] = hp->heapArr[childIdx];
+		parentIdx = childIdx;
+	}
+
+	hp->heapArr[parentIdx] = lastElem;
+	hp->numOfData -= 1;
+	return retData;
 
 }
 
