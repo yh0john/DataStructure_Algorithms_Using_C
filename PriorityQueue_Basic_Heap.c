@@ -40,6 +40,7 @@ void HeapInit(Heap* hp)
 
 int HeapIsEmpty(Heap* hp)
 {
+	//힙이 비었는지 check
 	if (hp->numOfData == 0) {
 		return TRUE;
 	}
@@ -48,9 +49,46 @@ int HeapIsEmpty(Heap* hp)
 	}
 }
 
+int GetParentIDX(int idx)
+{
+	//부모 인덱스 값 반환
+	return idx / 2;
+}
+
+int GetLeftChildIDX(int idx)
+{
+	//왼쪽 자식 인덱스 값 반환
+	return idx * 2;
+}
+
+int GetRightChildIDX(int idx)
+{
+	//오른쪽 자식 인덱스 값 반환
+	return idx * 2 + 1;
+}
+
 void HeapInsert(Heap* hp,HData data,Priority pr)
 {
+	//처음 들어온 데이터는 우선순위가 가장 낮다고 가정
+	//부모 노드와 우선순위를 비교해서 부모노드보다 우선순위가 클 경우, 자리 교체
+	//바로 위의 과정 반복
+	int idx = hp->numOfData + 1;
+	HeapElem nelem = { pr,data };
 
+	while (idx != 1) 
+	{
+		if (pr < hp->heapArr[GetParentIDX(idx)].pr)
+		{
+			//만약 부모노드보다 우선순위가 높을 경우 자리 교체
+			hp->heapArr[idx] = hp->heapArr[GetParentIDX(idx)];
+			idx = GetParentIDX(idx);
+		}
+		else 
+		{
+			//만약 부모노드보다 우선순위가 낮을 경우 while 문 break
+			break;
+		}
+	}
 }
 
 HData HeapDelete(Heap* hp)
