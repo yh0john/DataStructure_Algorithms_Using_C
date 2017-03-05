@@ -19,3 +19,9 @@ typedef struct _heap
 	int numOfData;
 	HData heapArr[HEAP_LEN];
 }Heap;
+
+
+int main(void) {
+		
+	return 0;
+}
