@@ -40,16 +40,17 @@ void HeapInsert(Heap* hp, HData data)
 	//처음 삽입 될 위치는 우선순위가 제일 낮은 곳으로 가정한다.
 	//부모 노드와 우선순위 비교 후 삽입된 노드가 우선순위가 높을 경우 switching
 	//부모 노드보다 우선순위가 낮을 경우, 그 자리가 노드의 삽입위치가 된다.
-	int idx = hp->numOfData + 1;
+
+	int idx = hp->numOfData+1;
 
 	while (idx != 1)
 	{
-		if (hp->compare(data,hp->heapArr[GetParentIDX(idx)])>0)
+		if (hp->compare(data, hp->heapArr[GetParentIDX(idx)]) > 0)
 		{
 			hp->heapArr[idx] = hp->heapArr[GetParentIDX(idx)];
 			idx = GetParentIDX(idx);
 		}
-		else 
+		else
 		{
 			break;
 		}
@@ -57,31 +58,39 @@ void HeapInsert(Heap* hp, HData data)
 
 	hp->heapArr[idx] = data;
 	hp->numOfData += 1;
+	
 }
 
 HData HeapDelete(Heap* hp)
 {
-	HData retData = hp->heapArr[1];
+	//제일 우선순위가 낮은 데이터(마지막데이터)보다 낮은 우선순위의 데이터를 찾았을 때 break;
+
+	//못 찾았을 경우, 자식 idx 값을 부모 idx값으로 대입
+	//다시 검색
+	
+	//삭제 할 데이터(우선순위가 가장 큰 데이터)
+	HData delData = hp->heapArr[1];
 	HData lastElem = hp->heapArr[hp->numOfData];
 
 	int parentIdx = 1;
 	int childIdx;
 
-	while (childIdx = GetHighPriorityChilIDX(parentIdx, hp))
+	while (childIdx = GetHighPriorityChilIDX(parentIdx))
 	{
-		//제일 우선순위가 낮은 데이터(마지막데이터)보다 낮은 우선순위의 데이터를 찾았을 때 break;
-		if (hp->compare(lastElem,hp->heapArr[childIdx])>=0)
+		if (hp->compare(lastElem, hp->heapArr[childIdx]) >= 0)
+		{
 			break;
-		
-		//못 찾았을 경우, 자식 idx 값을 부모 idx값으로 대입
-		//다시 검색
-		hp->heapArr[parentIdx] = hp->heapArr[childIdx];
-		parentIdx = childIdx;
+		}
+		else
+		{
+			hp->heapArr[parentIdx] = hp->heapArr[childIdx];
+			parentIdx = childIdx;
+		}
 	}
 
 	hp->heapArr[parentIdx] = lastElem;
 	hp->numOfData -= 1;
-	return retData;
+	return delData;
 }
 
 int GetLeftChildIDX(int idx)
