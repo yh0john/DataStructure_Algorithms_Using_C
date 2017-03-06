@@ -9,6 +9,7 @@
 * 시간복잡도를 따져 볼 것.
 */
 
+
 #include<stdio.h>
 
 #define TRUE 1

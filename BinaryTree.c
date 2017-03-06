@@ -13,6 +13,7 @@
 typedef int BTData;
 
 /* Tree Node 구조체 구현 */
+
 typedef struct _treeNode {
 	BTData data;
 	struct _treeNode* left;
