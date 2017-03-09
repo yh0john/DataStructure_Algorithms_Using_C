@@ -26,6 +26,26 @@ typedef struct _heap
 
 void HeapInit(Heap* hp,PriorityCompare comp)
 {
+	hp->numOfData = 0;
+	hp->compare = comp;
+}
+
+int GetLeftChildIDX(int idx)
+{
+
+}
+int GetRightChildIDX(int idx)
+{
+
+}
+
+int GetHighPriorityChildIDX(int idx)
+{
+
+}
+
+int GetParentIDX(int idx)
+{
 
 }
 
