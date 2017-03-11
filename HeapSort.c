@@ -32,25 +32,35 @@ void HeapInit(Heap* hp,PriorityCompare comp)
 
 int GetLeftChildIDX(int idx)
 {
-
+	return idx * 2;
 }
 int GetRightChildIDX(int idx)
 {
-
-}
-
-int GetHighPriorityChildIDX(int idx)
-{
-
+	return idx * 2 + 1;
 }
 
 int GetParentIDX(int idx)
 {
+	return idx / 2;
+}
+
+int GetHighPriorityChildIDX(int idx, Heap* hp)
+{
 
 }
 
+
 HData HeapDelete(Heap* hp)
 {
+	//MAX HEAP 기준으로 루트 노드의 데이터가 우선순위가 가장 높으므로 삭제 대상이 된다.
+	//루트노드를 삭제하고 우선순위가 가장 낮은 마지막 노드를 루트노드에 삽입한다.
+	//이후는 삽입 알고리즘과 동일하다
+
+	HData retData = hp->HeapArr[1];
+	HData lastElem = hp->HeapArr[hp->numOfData];
+
+	int parent = 1;
+	int child;
 
 }
 
