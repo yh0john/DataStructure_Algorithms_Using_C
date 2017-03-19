@@ -7,6 +7,9 @@
  
 #include<stdio.h>
 
+#define MAX_LEN 1000
+
+
 int main(void)
 {
 	return 0;
