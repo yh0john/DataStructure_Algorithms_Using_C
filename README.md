@@ -11,13 +11,13 @@ Learn Data Strucure &amp; Algorithms :innocent:
  7.InsertionSort.c 삽입 정렬<br/>
  8.SelectionSort.c 선택 정렬<br/>
  9.HeapSort.c 힙 정렬<br/>
- 10.MergeSort.c 병합 정렬<br/>
+ 10.MergeSort.c 병합 정렬<r/>
  11.QuickSort.c 퀵 정렬<br/>
- 12.Queue.c
- 13.Stack.c
+ 12.Queue.c 큐 자료구조<br/>
+ 13.Stack.c 스택 자료구조<br/>
 
 
 # Algorithm #
-1.Fibonacci Sequence.c <br/>
-2.Advanced Fibonacci - Memoization <br/>
+1.Fibonacci.c 피보나치 수열 일반적인 재귀 구현 <br/>
+2.Memoization.c 피보나치 수열 메모이제이션 기법 구현<br/>
 
