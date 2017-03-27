@@ -13,7 +13,7 @@ Learn Data Strucure &amp; Algorithms :innocent:
  9.MergeSort.c 병합 정렬<br/>
  10.QuickSort.c 퀵 정렬<br/>
  11.RadixSort.c 기수 정렬<br/>
- 12.Queue.c 큐 자료구조 ★ <b/>
+ 12.Queue.c 큐 자료구조 ★ <br/>
  13.Stack.c 스택 자료구조 ☆ <br/>
 
 
